@@ -1,0 +1,70 @@
+.wrap {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.calendar {
+  flex-basis: 480px;
+  min-width: 360px;
+  height: 600px;
+  background-color: #fff;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+/* 월 */
+.calendar__month {
+  width: 100%;
+  flex-basis: auto;
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.calendar__month .month {
+  font-size: 16px;
+  font-weight: bold;
+}
+.calendar__month .prev-month:hover,
+.calendar__month .next-month:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.calendar__month .current-month {
+  font-size: 20px;
+}
+/* 요일 */
+.calendar__day {
+  width: 100%;
+  flex-basis: auto;
+  padding: 20px 30px;
+}
+.calendar__day ul {
+  display: flex;
+  justify-content: space-around;
+}
+/* 일 */
+.calendar__date {
+  width: 100%;
+  flex: 1 1 auto;
+  padding: 20px 30px;
+}
+.calendar__date ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.calendar__date ul li {
+  width: calc(100% / 7);
+  padding: 10px;
+  text-align: center;
+}
+.red {
+  color: #de3728;
+}
+.blue {
+  color: #264cc9;
+}
