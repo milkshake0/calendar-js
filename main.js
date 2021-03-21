@@ -10,7 +10,7 @@ let nowMonth = month + 1; // 1 ~ 12
 let day = date.getDay(); // 0 ~ 6(일~토)
 let date2 = date.getDate();
 //화면에 초기값 설정
-yearEl.innerHTML = year;
+setYearText();
 setMonthText();
 setDateText(year, month);
 
@@ -47,7 +47,7 @@ function setMonthText(direction) {
 
 function getMonthText(nowMonth) {
   const currNum = nowMonth;
-  const nextNum = (nowMonth + 1) % 12;
+  const nextNum = (nowMonth + 1) % 12 || 12;
   const prevNum = nowMonth - 1 || 12;
   return [prevNum, currNum, nextNum];
 }
@@ -91,7 +91,6 @@ function getDateArrayOfMonth(year, month) {
 function setDateText(year, month) {
   removeChild(dateListsEl);
   const [frontArr, arr, backArr] = getDateArrayOfMonth(year, month);
-  //   console.log(backArr.length);
   for (let i = 0; i < frontArr.length; i++) {
     let newLi = document.createElement("li");
     newLi.classList.add("prevDate", "gray");
@@ -113,7 +112,6 @@ function setDateText(year, month) {
     newLi.appendChild(nextContent);
     dateListsEl.appendChild(newLi);
   }
-  //이전. 다음 날짜에는 prevDate, nextDate 클래스 추가해서 선택 시 체크하고 해당되면 이전,다음 월을 클릭한것처럼 동작시키기
 }
 
 function removeChild(parentObj) {
@@ -121,3 +119,12 @@ function removeChild(parentObj) {
     parentObj.removeChild(parentObj.firstChild);
   }
 }
+
+dateListsEl.addEventListener("click", function (e) {
+  if (e.target.classList.value.includes("prevDate")) {
+    prevMonthEl.click();
+  }
+  if (e.target.classList.value.includes("nextDate")) {
+    nextMonthEl.click();
+  }
+});
